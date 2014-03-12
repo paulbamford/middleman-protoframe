@@ -1,0 +1,176 @@
+@import "bourbon/bourbon";
+@import "grid-settings";
+@import "neat/neat";
+@import "custom-mixins/horizontal-list";
+@import "custom-mixins/px-to-rem";
+
+
+
+/* ---   Variables and styles to be split out to out to individual files --*/
+
+/*-- VARIABLES --*/
+
+
+
+// COLOURS
+// --------------------------------------------------
+
+//-- Base
+
+
+$dark-grey: #333;
+$mid-grey: #999;
+$light-grey: #e0e0e0;
+$white: #fff;
+
+$color-primary-text: #2b2b2b;
+$color-footer-bg: #9a9a9a;
+$color-footer-text: $white;
+
+$color-steps-text: $white;
+
+$font-size-default: 16px;
+
+
+// Reusables
+
+.container            	{ @include outer-container();}
+
+.list.inline 	    	{ @include horizontal-list();}
+
+.list.unstyled        	{ list-style-type: none; margin:0; padding-left: 0;}
+
+.responsive-img			{ max-width: 100%;}
+
+.row 					{ @include fill-parent(); margin: 20px 0;}
+
+.panel					{ @include pad(20px); border: 1px solid #e0e0e0; margin-top: 24px; margin-bottom: 24px;}
+
+
+// TYPOGRAPHY 
+// --------------------------------------------------
+
+
+/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);*/
+
+body 					{font-family: 'Open Sans', sans-serif;}
+
+// Enter px value then converts to REMs
+
+h1 						{ @include fontSize (36px);}
+
+h2						{ @include fontSize (24px);}
+
+h3						{ @include fontSize (18px);}
+
+body					{ color: $color-primary-text; @include fontSize ($font-size-default); line-height: 1.5em;} 						
+
+.logo					{ @include fontSize (48px); margin-bottom: 36px}
+
+.border-bottom			{ border-bottom: 3px solid #999;}
+
+
+
+// HEADER
+// --------------------------------------------------
+
+header					{ @include pad(18px 0); margin-bottom: 24px;}
+
+// NAVIGATION
+// --------------------------------------------------
+
+
+.logo					{ float: left; display: block;}
+
+.top-nav				{ @include fill-parent(); margin-top: 18px;
+							li { margin-right: 2em;
+								&:last-of-type { margin-right: 0;}
+								}
+						}
+
+.nav__right 			{
+							.top-nav__links { float: right;}									
+						}
+
+.nav__left 				{
+							.top-nav__links { @include fill-parent; margin-top: 36px;}									
+						}
+
+.utility-nav 			{ float: right;}
+
+
+// STAGES
+// --------------------------------------------------
+
+.stages.list 			{ background-color: $mid-grey; color: $color-steps-text; width: 100px; @include fill-parent(); display: flex;					
+							> li { margin-left: auto; margin-right: auto; text-align: center;  display: inline-block; float: left;}
+						}
+
+
+// FORMS 
+// --------------------------------------------------
+
+form 					{ margin: 20px 0;}
+
+.label-left 			{
+							label { @include span-columns(2); display: block;}
+	 					}
+.label-above			{
+							label { clear: both; display: block;}
+	 					}
+
+.form__row				{ margin-bottom: 16px;}
+
+
+
+// BANNERS AND THUMBS
+// --------------------------------------------------
+
+.feature-banner       	{ @include fill-parent();}
+
+.thumbs 			  	{ @include row();}
+
+.two .thumbs__img      { @include span-columns(6);}
+
+.three .thumbs__img      { @include span-columns(4);}
+
+.four .thumbs__img       { @include span-columns(3);}
+
+.six .thumbs__img        { @include span-columns(2);}
+
+/*-- BREADCRUMBS --*/
+
+
+// BREADCRUMBS
+// --------------------------------------------------
+
+
+.breadcrumb 			{ @include fontSize (12px);
+							> li { display: inline-block; margin-right: 20px;
+								a { text-decoration: none;
+									&:after { content: '\00a0 >\0000a0'; }
+								}
+							}
+						}
+
+// BREADCRUMBS
+// --------------------------------------------------
+
+.thumbs.row 			{ marign-bottom:Ä;}
+
+// BLOCKQUOTES
+// --------------------------------------------------
+
+blockquote 				{ 
+							p {color: #999; @include fontSize (30px); line-height: 1.5em; font-style: italic; font-family: serif;}
+							cite, a { @include fontSize (14px); font-style: normal;}
+						}
+
+
+// FOOTER
+// --------------------------------------------------
+
+.site-footer			{ background-color: $color-footer-bg; color: $color-footer-text; @include pad(24px); @include fill-parent;
+							ul, p {@include fontSize(12px);}
+						}
+

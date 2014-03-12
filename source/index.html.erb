@@ -1,0 +1,48 @@
+---	
+title: Prototyping Template
+---
+
+<div class="container">
+
+	<ol class="list unstyled breadcrumb">
+  		<li><a href="#">Home</a></li>
+  		<li><a href="#">Library</a></li>
+  		<li class="active">Data</li>
+	</ol>
+	
+	<!-- Typography hierarchy -->
+	<h1>Title</h1>
+
+	<h2>Sub Title</h2>
+
+	<!-- Full width hero banner -->
+
+	<%= partial "partials/feature-banner" %>
+
+	<!-- Thumbnails -->
+
+	<%= partial "partials/thumbs-row-of-2" %>
+
+	<%= partial "partials/thumbs-row-of-3" %>
+
+	<%= partial "partials/thumbs-row-of-4" %>
+
+	<%= partial "partials/thumbs-row-of-6" %>
+
+	<div class="panel">
+		<p><%= lorem.paragraphs 3 %></p> <!-- Automatically creates 3 paragraphs of Lorem. No breaks, just one block -->
+	</div>
+
+	<!-- Paragraph: change numberic value to generate different number of paras -->
+	<p><%= lorem.paragraphs 3 %></p>
+
+
+	<!-- Block quote with citation -->
+	<blockquote>
+		<p><%= lorem.sentence %></p>
+		<footer>
+			<cite><a href="https://speakerdeck.com/bermonpainter/rapid-prototyping-with-sass-compass-slim-and-middleman">Repsonsive Prototyping</a></cite>
+		</footer>
+	</blockquote>
+
+</div>
