@@ -7,14 +7,11 @@ title: Prototyping Template
 	<%= partial "partials/stages" %>
 
 
-	<%= partial "partials/select" %>
+	<%= partial "partials/select", locals: { classes: "" } %>
 
-	<!-- Class to define label position: .label-above or .label-left -->
-	<div class="label-above">
-		<%= partial "partials/address-form" %>
-	</div>
+	<%= partial "partials/address-form", locals: { classes: "label-top" } %>
 
-	<div class="label-left">
-		<%= partial "partials/login-form" %>
-	</div>
+
+	<%= partial "partials/login-form", locals: { classes: "label-left" } %>
+
 </div>

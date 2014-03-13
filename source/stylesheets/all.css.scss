@@ -1,6 +1,7 @@
 @import "bourbon/bourbon";
 @import "grid-settings";
 @import "neat/neat";
+@import "normalize";
 @import "custom-mixins/horizontal-list";
 @import "custom-mixins/px-to-rem";
 
@@ -115,7 +116,7 @@ form 					{ margin: 20px 0;}
 .label-left 			{
 							label { @include span-columns(2); display: block;}
 	 					}
-.label-above			{
+.label-top			{
 							label { clear: both; display: block;}
 	 					}
 
