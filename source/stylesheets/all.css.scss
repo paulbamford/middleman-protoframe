@@ -4,6 +4,7 @@
 @import "normalize";
 @import "custom-mixins/horizontal-list";
 @import "custom-mixins/px-to-rem";
+@import "custom-mixins/rems";
 
 
 
@@ -23,9 +24,14 @@ $dark-grey: #333;
 $mid-grey: #999;
 $light-grey: #e0e0e0;
 $white: #fff;
+$mid-blue: #2F7DD8;
 
-$color-primary-text: #2b2b2b;
-$color-footer-bg: #9a9a9a;
+$color-primary-text: $dark-grey;
+$color-default-url:	$mid-blue;
+
+
+$color-side-nav-bg: $light-grey;
+$color-footer-bg: $mid-grey;
 $color-footer-text: $white;
 
 $color-steps-text: $white;
@@ -48,13 +54,22 @@ $font-size-default: 16px;
 .panel					{ @include pad(20px); border: 1px solid #e0e0e0; margin-top: 24px; margin-bottom: 24px;}
 
 
+// GRID 
+// --------------------------------------------------
+
+.one-col 				{ @include span-columns(1);}
+.two-col 				{ @include span-columns(2);}
+.three-col 				{ @include span-columns(3);}
+.four-col 				{ @include span-columns(4);}
+
+
 // TYPOGRAPHY 
 // --------------------------------------------------
 
 
 /*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);*/
 
-body 					{font-family: 'Open Sans', sans-serif;}
+body 					{font-family: 'Open Sans', sans-serif; color: $color-primary-text; @include fontSize ($font-size-default); line-height: 1.5em;}
 
 // Enter px value then converts to REMs
 
@@ -64,9 +79,9 @@ h2						{ @include fontSize (24px);}
 
 h3						{ @include fontSize (18px);}
 
-body					{ color: $color-primary-text; @include fontSize ($font-size-default); line-height: 1.5em;} 						
+a 						{ color: $color-default-url;}
 
-.logo					{ @include fontSize (48px); margin-bottom: 36px}
+strong 					{ font-weight: bold;}
 
 .border-bottom			{ border-bottom: 3px solid #999;}
 
@@ -75,7 +90,9 @@ body					{ color: $color-primary-text; @include fontSize ($font-size-default); l
 // HEADER
 // --------------------------------------------------
 
-header					{ @include pad(18px 0); margin-bottom: 24px;}
+header					{ @include pad(18px 0); margin-bottom: 24px;
+							.logo { @include fontSize (48px); margin-bottom: 36px}
+						}
 
 // NAVIGATION
 // --------------------------------------------------
@@ -85,19 +102,37 @@ header					{ @include pad(18px 0); margin-bottom: 24px;}
 
 .top-nav				{ @include fill-parent(); margin-top: 18px;
 							li { margin-right: 2em;
-								&:last-of-type { margin-right: 0;}
+								&:last-of-type { margin-right: 0;}	
 								}
+							.utility-nav { float: right;}
 						}
 
-.nav__right 			{
-							.top-nav__links { float: right;}									
+.right-nav				{ 
+							.top-nav {
+								ul { float: right;}
+							}
+						}			
+
+.left-nav				{ 
+							.top-nav {
+								ul { @include fill-parent; margin-top: 36px; clear: both;}
+							}	
 						}
 
-.nav__left 				{
-							.top-nav__links { @include fill-parent; margin-top: 36px;}									
+.utility-nav			{ 
+							ul { float: right;}
 						}
 
-.utility-nav 			{ float: right;}
+.side-nav				{ background-color: $color-side-nav-bg; @include pad(24px);
+							li { border-bottom: 1px solid $mid-grey; @include pad(6px 0);
+								a { text-decoration: none; 
+									&:hover { text-decoration:underline;}
+								}
+								&:last-of-type {border-bottom: 0;}
+							}
+						}
+
+
 
 
 // STAGES
@@ -116,11 +151,13 @@ form 					{ margin: 20px 0;}
 .label-left 			{
 							label { @include span-columns(2); display: block;}
 	 					}
-.label-top			{
+.label-top				{
 							label { clear: both; display: block;}
 	 					}
 
-.form__row				{ margin-bottom: 16px;}
+.form__row				{ margin-bottom: 18px; clear: both;}
+
+.form__terms			{ @include fontSize(12px); line-height: 1.5em;}
 
 
 
@@ -129,17 +166,29 @@ form 					{ margin: 20px 0;}
 
 .feature-banner       	{ @include fill-parent();}
 
-.thumbs 			  	{ @include row();}
+.thumb-wrap				{ }
 
-.two .thumbs__img      { @include span-columns(6);}
+.thumbs 			  	{ }
 
-.three .thumbs__img      { @include span-columns(4);}
+.thumb-caption			{ clear: both;}
 
-.four .thumbs__img       { @include span-columns(3);}
+.two .thumb-wrap      	{ @include span-columns(6);}
 
-.six .thumbs__img        { @include span-columns(2);}
+.three .thumbs__img     { @include span-columns(4);}
 
-/*-- BREADCRUMBS --*/
+.four .thumbs__img      { @include span-columns(3);}
+
+.six .thumbs__img       { @include span-columns(2);}
+
+.thumbs__img 			{ width: 100%;}
+
+
+.thumb-caption 			{ display: none;}
+
+.with-caption			{ 
+							.thumb-caption { display: block;}
+						}
+
 
 
 // BREADCRUMBS
@@ -157,7 +206,7 @@ form 					{ margin: 20px 0;}
 // BREADCRUMBS
 // --------------------------------------------------
 
-.thumbs.row 			{ marign-bottom:Ä;}
+.thumbs.row 			{ margin-bottom:20px;}
 
 // BLOCKQUOTES
 // --------------------------------------------------
@@ -168,10 +217,12 @@ blockquote 				{
 						}
 
 
+
 // FOOTER
 // --------------------------------------------------
 
-.site-footer			{ background-color: $color-footer-bg; color: $color-footer-text; @include pad(24px); @include fill-parent;
+.site-footer			{ background-color: $color-footer-bg; color: $color-footer-text; @include fill-parent;
 							ul, p {@include fontSize(12px);}
+							.site-footer__info { @include fontSize (10px); text-align: right; background-color: $color-footer-bg;}
 						}
 

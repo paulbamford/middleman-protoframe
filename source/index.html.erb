@@ -4,16 +4,14 @@ title: Prototyping Template
 
 <div class="container">
 
-	<ol class="list unstyled breadcrumb">
-  		<li><a href="#">Home</a></li>
-  		<li><a href="#">Library</a></li>
-  		<li class="active">Data</li>
-	</ol>
+	<%= partial "partials/breadcrumbs" %>
 	
 	<!-- Typography hierarchy -->
 	<h1>Title</h1>
 
 	<h2>Sub Title</h2>
+
+	<%= partial "partials/side-nav", locals: { classes: "four-col" } %>
 
 	<!-- Full width hero banner -->
 
@@ -21,13 +19,21 @@ title: Prototyping Template
 
 	<!-- Thumbnails -->
 
-	<%= partial "partials/thumbs-row-of-2" %>
+	<%= partial "partials/thumbs-row-of-2", locals: { classes: "" }  %>
 
 	<%= partial "partials/thumbs-row-of-3" %>
 
 	<%= partial "partials/thumbs-row-of-4" %>
 
 	<%= partial "partials/thumbs-row-of-6" %>
+
+
+	<a href="#" class="button" data-dropdown="drop">Link Dropdown &raquo;</a>
+	<ul id="drop" class="[tiny small medium large content]f-dropdown" data-dropdown-content>
+	  <li><a href="#">This is a link</a></li>
+	  <li><a href="#">This is another</a></li>
+	  <li><a href="#">Yet another</a></li>
+	</ul>
 
 	<div class="panel">
 		<p><%= lorem.paragraphs 3 %></p> <!-- Automatically creates 3 paragraphs of Lorem. No breaks, just one block -->

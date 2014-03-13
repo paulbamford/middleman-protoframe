@@ -2,15 +2,20 @@
 title: Prototyping Template
 ---
 
+<!-- 
+locals: { classes: "" } passes class on to partial element with %= classes % specified.
+Eg add locals: { classes: "label-top" } adds "label-top" class to form, making labels sit on to of inputs.
+Look at using for column spans for responsive layout changes.
+-->
+
 <div class="container">
 
 	<%= partial "partials/stages" %>
 
 
-	<%= partial "partials/select", locals: { classes: "" } %>
+	<%= partial "partials/select", locals: { classes: "label-left" } %>
 
 	<%= partial "partials/address-form", locals: { classes: "label-top" } %>
-
 
 	<%= partial "partials/login-form", locals: { classes: "label-left" } %>
 

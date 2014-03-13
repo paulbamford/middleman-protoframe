@@ -15,9 +15,7 @@
   
   <body class="<%= page_classes %>">
 
-  <header class="container border-bottom nav__right">
-    <%= partial "partials/top-nav" %>
-  </header>
+    <%= partial "partials/header", locals: { classes: "left-nav" } %>
 
     <%= yield %>
 
