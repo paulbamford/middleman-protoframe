@@ -1,14 +1,20 @@
-@import "bourbon/bourbon";
-@import "grid-settings";
-@import "neat/neat";
+
+@import "bourbon";
+@import "grid-presets/grid-settings";
+@import "neat";
 @import "normalize";
+@import "font-awesome/font-awesome";
+
+
+@import "grid-presets/variables";
+@import "grid-presets/mixins";
+@import "grid-presets/grid";
+
+
 @import "custom-mixins/horizontal-list";
 @import "custom-mixins/px-to-rem";
 @import "custom-mixins/rems";
 
-
-
-/* ---   Variables and styles to be split out to out to individual files --*/
 
 /*-- VARIABLES --*/
 
@@ -18,7 +24,6 @@
 // --------------------------------------------------
 
 //-- Base
-
 
 $dark-grey: #333;
 $mid-grey: #999;
@@ -30,6 +35,8 @@ $color-primary-text: $dark-grey;
 $color-default-url:	$mid-blue;
 
 
+//-- Element Specific
+
 $color-side-nav-bg: $light-grey;
 $color-footer-bg: $mid-grey;
 $color-footer-text: $white;
@@ -39,7 +46,8 @@ $color-steps-text: $white;
 $font-size-default: 16px;
 
 
-// Reusables
+// REUSABLE ELEMENTS
+// --------------------------------------------------
 
 .container            	{ @include outer-container();}
 
@@ -49,7 +57,7 @@ $font-size-default: 16px;
 
 .responsive-img			{ max-width: 100%;}
 
-.row 					{ @include fill-parent(); margin: 20px 0;}
+.row 					{ @include fill-parent(); @include row(); margin: 20px 0;}
 
 .panel					{ @include pad(20px); border: 1px solid #e0e0e0; margin-top: 24px; margin-bottom: 24px;}
 
@@ -57,17 +65,16 @@ $font-size-default: 16px;
 // GRID 
 // --------------------------------------------------
 
-.one-col 				{ @include span-columns(1);}
-.two-col 				{ @include span-columns(2);}
-.three-col 				{ @include span-columns(3);}
-.four-col 				{ @include span-columns(4);}
+$mobile: new-breakpoint(max-width 480px);
+$tablet: new-breakpoint(max-width 768px);
+$desktop: new-breakpoint(min-width 769px);
 
 
 // TYPOGRAPHY 
 // --------------------------------------------------
 
 
-/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);*/
+@include font-face(SourceSansPro, '/fonts/Source_Sans_Pro/SourceSansPro-Regular');
 
 body 					{font-family: 'Open Sans', sans-serif; color: $color-primary-text; @include fontSize ($font-size-default); line-height: 1.5em;}
 
@@ -91,8 +98,11 @@ strong 					{ font-weight: bold;}
 // --------------------------------------------------
 
 header					{ @include pad(18px 0); margin-bottom: 24px;
-							.logo { @include fontSize (48px); margin-bottom: 36px}
+							.logo { @include fontSize (48px); margin-bottom: 36px;}
+							.bekannt-bar { @include fill-parent();background-color: $dark-grey; @include fontSize(12px); display: inline-block; color: $white; }
 						}
+
+
 
 // NAVIGATION
 // --------------------------------------------------
@@ -123,7 +133,7 @@ header					{ @include pad(18px 0); margin-bottom: 24px;
 							ul { float: right;}
 						}
 
-.side-nav				{ background-color: $color-side-nav-bg; @include pad(24px);
+.side-nav				{  background-color: $color-side-nav-bg; @include pad(24px);					
 							li { border-bottom: 1px solid $mid-grey; @include pad(6px 0);
 								a { text-decoration: none; 
 									&:hover { text-decoration:underline;}
@@ -132,7 +142,12 @@ header					{ @include pad(18px 0); margin-bottom: 24px;
 							}
 						}
 
+.dropdown-trigger		{ text-decoration: none; cursor: pointer;}
 
+.dropdown-content		{ display: none; position: absolute; background-color: $white; border: 1px solid $light-grey; z-index: 10;
+							&.active { display: block;}	
+							a { display: block;  @include pad(6px 24px);}						
+						}
 
 
 // STAGES
@@ -172,9 +187,9 @@ form 					{ margin: 20px 0;}
 
 .thumb-caption			{ clear: both;}
 
-.two .thumb-wrap      	{ @include span-columns(6);}
+//.two .thumb-wrap     	{ @include span-columns(6);}
 
-.three .thumbs__img     { @include span-columns(4);}
+//.three .thumbs__img   { @include span-columns(4);}
 
 .four .thumbs__img      { @include span-columns(3);}
 
@@ -207,6 +222,7 @@ form 					{ margin: 20px 0;}
 // --------------------------------------------------
 
 .thumbs.row 			{ margin-bottom:20px;}
+
 
 // BLOCKQUOTES
 // --------------------------------------------------
