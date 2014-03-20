@@ -1,23 +1,59 @@
 
 @import "bourbon";
-@import "grid-presets/grid-settings";
 @import "neat";
 @import "normalize";
 @import "font-awesome/font-awesome";
 
-
-@import "grid-presets/variables";
-@import "grid-presets/mixins";
-@import "grid-presets/grid";
-
+//@import "grid-presets/variables";
+//@import "grid-presets/mixins";
+@import "grid-settings";
+//@import "grid-presets/grid";
 
 @import "custom-mixins/horizontal-list";
 @import "custom-mixins/px-to-rem";
 @import "custom-mixins/rems";
 
 
-/*-- VARIABLES --*/
 
+/*-- GRID LAYOUT SETTINGS --*/
+// --------------------------------------------------
+
+.six .thumb-wrap 		{ 
+							@include media(480px) {
+								@include span-columns(2);}
+							@include media(max-width 768px) {
+								@include span-columns(4); @include omega(3n);}
+						}
+
+.four .thumb-wrap 		{ 
+							@include media(480px) {
+								@include span-columns(3);
+							}
+							@include media(max-width 768px) {
+								@include span-columns(6); @include omega(2n);}
+							}
+
+.three .thumb-wrap 		{ 
+							@include media(480px) {
+								@include span-columns(4);}
+						}
+
+.two .thumb-wrap 		{ 
+							@include media(480px) {
+								@include span-columns(6);}
+						}
+
+
+.side-nav 				{
+							@include media(480px) {
+								@include span-columns(6);}
+							@include media(min-width 768px) {
+								@include span-columns(8);}
+						}
+
+
+/*-- VARIABLES --*/
+// --------------------------------------------------
 
 
 // COLOURS
@@ -57,17 +93,21 @@ $font-size-default: 16px;
 
 .responsive-img			{ max-width: 100%;}
 
-.row 					{ @include fill-parent(); @include row(); margin: 20px 0;}
+.row 					{ @include fill-parent();  @include row(table);}
 
 .panel					{ @include pad(20px); border: 1px solid #e0e0e0; margin-top: 24px; margin-bottom: 24px;}
 
+.float-left				{ float: left;}
+
+.float-right			{ float: right;}
+
+.hide-on-phone			{@include media(480px) 
+							{display: none;}
+						}
+
 
 // GRID 
-// --------------------------------------------------
-
-$mobile: new-breakpoint(max-width 480px);
-$tablet: new-breakpoint(max-width 768px);
-$desktop: new-breakpoint(min-width 769px);
+// -------------------------------------------------
 
 
 // TYPOGRAPHY 
@@ -142,6 +182,7 @@ header					{ @include pad(18px 0); margin-bottom: 24px;
 							}
 						}
 
+
 .dropdown-trigger		{ text-decoration: none; cursor: pointer;}
 
 .dropdown-content		{ display: none; position: absolute; background-color: $white; border: 1px solid $light-grey; z-index: 10;
@@ -183,17 +224,9 @@ form 					{ margin: 20px 0;}
 
 .thumb-wrap				{ }
 
-.thumbs 			  	{ }
+.thumbs 			  	{ @include fill-parent();}
 
 .thumb-caption			{ clear: both;}
-
-//.two .thumb-wrap     	{ @include span-columns(6);}
-
-//.three .thumbs__img   { @include span-columns(4);}
-
-.four .thumbs__img      { @include span-columns(3);}
-
-.six .thumbs__img       { @include span-columns(2);}
 
 .thumbs__img 			{ width: 100%;}
 
